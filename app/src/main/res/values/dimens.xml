@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="left">240dp</dimen>
+    <dimen name="right">200dp</dimen>
+    <dimen name="tb_elevation">4dp</dimen>
+    <dimen name="p_menu">20dp</dimen>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Makan Apa</string>
+    <string name="main_fragment">Makan Apa Hari ini?</string>
+    <string name="click">Search</string>
+    <string name="menu_fragment_text">This is Menu Fragment</string>
+    <string name="search_fragment_text">This is Search Fragment</string>
+    <string name="setting_fragment_text">This is Setting Fragment</string>
+    <string name="openDrawer">Open Drawer</string>
+    <string name="closeDrawer">Close Drawer</string>
+</resources>
