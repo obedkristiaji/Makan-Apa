@@ -8,3 +8,4 @@ https://github.com/obedkristiaji/scooteross.git
 - Obed Kristiaji Sudarman (6181801003)
 - Florenthia Kezia Kurniawan (6181801028)
 - Rama Fauzi Setiawan (6181801051)
+"# MakanApa" 
