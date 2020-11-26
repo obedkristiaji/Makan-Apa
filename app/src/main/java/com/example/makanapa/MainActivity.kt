@@ -1,23 +1,32 @@
 package com.example.makanapa
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.makanapa.databinding.ActivityMainBinding
 import com.example.makanapa.fragment.*
+import com.example.makanapa.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), FragmentListener {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var fragmentManager: FragmentManager
-    private lateinit var fragmentM: MainFragment
+    private lateinit var fragmentHome: HomeFragment
     private lateinit var fragmentMenu: MenuFragment
     private lateinit var fragmentSearch: SearchFragment
     private lateinit var fragmentSetting: SettingFragment
     private lateinit var fragmentAdd: AddFragment
     private lateinit var fragmentEdit: EditFragment
+    private lateinit var viewModel: MainActivityViewModel
+    private var size: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,177 +38,86 @@ class MainActivity : AppCompatActivity(), FragmentListener {
         drawer_layout.addDrawerListener(abdt)
         abdt.syncState()
 
-        this.fragmentM = MainFragment()
+        this.fragmentHome = HomeFragment()
         this.fragmentMenu = MenuFragment()
         this.fragmentSearch = SearchFragment()
         this.fragmentSetting = SettingFragment()
         this.fragmentAdd = AddFragment()
         this.fragmentEdit = EditFragment()
         this.fragmentManager = this.supportFragmentManager
-        this.changePage(1)
+
+        viewModel = ViewModelProviders.of(this)[MainActivityViewModel::class.java]
+
+        viewModel.page.observe(this, Observer<String> { page ->
+            this.changePage(page)
+        })
+
+        viewModel.open.observe(this, Observer<Boolean> { open ->
+            this.closeApplication(open)
+        })
+
+        viewModel.openKey.observe(this, Observer<Boolean> { openKey ->
+            this.closeKeyboard(openKey)
+        })
+
+        viewModel.dark.observe(this, Observer<Boolean> { dark ->
+            this.viewModel.darkBackground(dark, this.binding.llMain)
+        })
+
+        viewModel.size.observe(this, Observer<Int> { size ->
+            this.size = size
+        })
     }
 
-    override fun changePage(page: Int) {
+    fun changePage(page: String) {
         val ft: FragmentTransaction = this.fragmentManager.beginTransaction()
-        if(page == 1) {
-            if(this.fragmentM.isAdded()) {
-                ft.show(this.fragmentM)
-            } else {
-                ft.add(binding.fragmentContainer.id, this.fragmentM)
+        when(page) {
+            "Home" -> {
+                this.fragmentManager.popBackStackImmediate()
+                ft.replace(binding.fragmentContainer.id, this.fragmentHome)
             }
-            if(this.fragmentMenu.isAdded()) {
-                ft.hide(this.fragmentMenu)
+            "Search" -> {
+                if(this.size > 0){
+                    ft.replace(binding.fragmentContainer.id, this.fragmentSearch).addToBackStack(null)
+                } else {
+                    this.changePage("Menu")
+                    Toast.makeText(this, "Masukkan menu terlebih dahulu!", Toast.LENGTH_SHORT).show()
+                }
             }
-            if(this.fragmentSearch.isAdded()) {
-                ft.hide(this.fragmentSearch)
+            "Menu" -> {
+                this.fragmentManager.popBackStackImmediate()
+                ft.replace(binding.fragmentContainer.id, this.fragmentMenu).addToBackStack(null)
             }
-            if(this.fragmentSetting.isAdded()) {
-                ft.hide(this.fragmentSetting)
+            "Setting" -> {
+                this.fragmentManager.popBackStackImmediate()
+                ft.replace(binding.fragmentContainer.id, this.fragmentSetting).addToBackStack(null)
             }
-            if(this.fragmentAdd.isAdded()) {
-                ft.hide(this.fragmentAdd)
+            "Add" -> {
+                ft.replace(binding.fragmentContainer.id, this.fragmentAdd).addToBackStack(null)
             }
-            if(this.fragmentEdit.isAdded()) {
-                ft.hide(this.fragmentEdit)
-            }
-        } else if(page == 2) {
-            if(this.fragmentSearch.isAdded()) {
-                ft.show(this.fragmentSearch)
-            } else {
-                ft.add(binding.fragmentContainer.id, this.fragmentSearch)
-            }
-            if(this.fragmentMenu.isAdded()) {
-                ft.hide(this.fragmentMenu)
-            }
-            if(this.fragmentM.isAdded()) {
-                ft.hide(this.fragmentM)
-            }
-            if(this.fragmentSetting.isAdded()) {
-                ft.hide(this.fragmentSetting)
-            }
-            if(this.fragmentAdd.isAdded()) {
-                ft.hide(this.fragmentAdd)
-            }
-            if(this.fragmentEdit.isAdded()) {
-                ft.hide(this.fragmentEdit)
-            }
-        } else if(page == 3) {
-            if(this.fragmentMenu.isAdded()) {
-                ft.show(this.fragmentMenu)
-            } else {
-                ft.add(binding.fragmentContainer.id, this.fragmentMenu)
-            }
-            if(this.fragmentM.isAdded()) {
-                ft.hide(this.fragmentM)
-            }
-            if(this.fragmentSearch.isAdded()) {
-                ft.hide(this.fragmentSearch)
-            }
-            if(this.fragmentSetting.isAdded()) {
-                ft.hide(this.fragmentSetting)
-            }
-            if(this.fragmentAdd.isAdded()) {
-                ft.hide(this.fragmentAdd)
-            }
-            if(this.fragmentEdit.isAdded()) {
-                ft.hide(this.fragmentEdit)
-            }
-        } else if(page == 4) {
-            if(this.fragmentSetting.isAdded()) {
-                ft.show(this.fragmentSetting)
-            } else {
-                ft.add(binding.fragmentContainer.id, this.fragmentSetting)
-            }
-            if(this.fragmentMenu.isAdded()) {
-                ft.hide(this.fragmentMenu)
-            }
-            if(this.fragmentM.isAdded()) {
-                ft.hide(this.fragmentM)
-            }
-            if(this.fragmentSearch.isAdded()) {
-                ft.hide(this.fragmentSearch)
-            }
-            if(this.fragmentAdd.isAdded()) {
-                ft.hide(this.fragmentAdd)
-            }
-            if(this.fragmentEdit.isAdded()) {
-                ft.hide(this.fragmentEdit)
-            }
-        } else if(page == 5) {
-            if(this.fragmentAdd.isAdded()) {
-                ft.show(this.fragmentAdd)
-            } else {
-                ft.add(binding.fragmentContainer.id, this.fragmentAdd)
-            }
-            if(this.fragmentMenu.isAdded()) {
-                ft.hide(this.fragmentMenu)
-            }
-            if(this.fragmentM.isAdded()) {
-                ft.hide(this.fragmentM)
-            }
-            if(this.fragmentSearch.isAdded()) {
-                ft.hide(this.fragmentSearch)
-            }
-            if(this.fragmentSetting.isAdded()) {
-                ft.hide(this.fragmentSetting)
-            }
-            if(this.fragmentEdit.isAdded()) {
-                ft.hide(this.fragmentEdit)
-            }
-        } else if(page == 6) {
-            if(this.fragmentEdit.isAdded()) {
-                ft.show(this.fragmentEdit)
-            } else {
-                ft.add(binding.fragmentContainer.id, this.fragmentEdit)
-            }
-            if(this.fragmentMenu.isAdded()) {
-                ft.hide(this.fragmentMenu)
-            }
-            if(this.fragmentM.isAdded()) {
-                ft.hide(this.fragmentM)
-            }
-            if(this.fragmentSearch.isAdded()) {
-                ft.hide(this.fragmentSearch)
-            }
-            if(this.fragmentSetting.isAdded()) {
-                ft.hide(this.fragmentSetting)
-            }
-            if(this.fragmentAdd.isAdded()) {
-                ft.hide(this.fragmentAdd)
+            "Edit" -> {
+                ft.replace(binding.fragmentContainer.id, this.fragmentEdit).addToBackStack(null)
             }
         }
         this.drawer_layout.closeDrawers()
         ft.commit()
     }
 
-    override fun closeApplication() {
-        this.moveTaskToBack(true)
-        this.finish()
+    fun closeApplication(open: Boolean) {
+        if(!open) {
+            this.moveTaskToBack(true)
+            this.finish()
+        }
     }
 
-    override fun onMenuListClick(position: Int, title: String, desc: String, tag: String, bahan: String, cara: String, resto: String) {
-        val ft: FragmentTransaction = this.fragmentManager.beginTransaction()
-        this.fragmentSearch = SearchFragment.newInstance(title, desc, tag, bahan, cara, resto)
-        if(this.fragmentSearch.isAdded()) {
-            ft.show(this.fragmentSearch)
-        } else {
-            ft.add(binding.fragmentContainer.id, this.fragmentSearch)
+    fun closeKeyboard(openKey: Boolean) {
+        if(!openKey) {
+            val view: View? = this.currentFocus
+            if (view != null) {
+                val imm: InputMethodManager =
+                    this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(view.windowToken, 0)
+            }
         }
-        if(this.fragmentMenu.isAdded()) {
-            ft.hide(this.fragmentMenu)
-        }
-        if(this.fragmentM.isAdded()) {
-            ft.hide(this.fragmentM)
-        }
-        if(this.fragmentSetting.isAdded()) {
-            ft.hide(this.fragmentSetting)
-        }
-        if(this.fragmentAdd.isAdded()) {
-            ft.hide(this.fragmentAdd)
-        }
-        if(this.fragmentEdit.isAdded()) {
-            ft.hide(this.fragmentEdit)
-        }
-        ft.commit()
     }
 }

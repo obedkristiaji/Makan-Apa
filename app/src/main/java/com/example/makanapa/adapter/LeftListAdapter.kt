@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import com.example.makanapa.FragmentListener
 import com.example.makanapa.databinding.LeftListBinding
 import com.example.makanapa.model.Left
+import com.example.makanapa.viewmodel.MainActivityViewModel
 
-class LeftListAdapter(context: Context, data: List<Left>, listener: FragmentListener): ArrayAdapter<Left>(context, 0, data) {
+class LeftListAdapter(context: Context, data: List<Left>, viewModel: MainActivityViewModel): ArrayAdapter<Left>(context, 0, data) {
     private var leftList: List<Left> = data
     private var view: Context = context
-    private var listener: FragmentListener = listener
+    private var viewModel = viewModel
 
     override fun getItem(position: Int): Left {
         return leftList[position]
@@ -24,7 +24,7 @@ class LeftListAdapter(context: Context, data: List<Left>, listener: FragmentList
 
         if (view == null) {
             itemView = LeftListBinding.inflate(LayoutInflater.from(this.view)).root
-            viewHolder = ViewHolder(itemView, listener)
+            viewHolder = ViewHolder(itemView, viewModel)
             itemView.tag = viewHolder
         } else {
             itemView = view
@@ -35,20 +35,20 @@ class LeftListAdapter(context: Context, data: List<Left>, listener: FragmentList
         return itemView
     }
 
-    private class ViewHolder(view: View, listener: FragmentListener) {
+    private class ViewHolder(view: View, viewModel: MainActivityViewModel) {
         private val binding: LeftListBinding = LeftListBinding.bind(view)
-        private val listener: FragmentListener = listener
+        private val viewModel: MainActivityViewModel = viewModel
 
         fun updateView(left: Left) {
             this.binding.tvLeft.text = left.getTitle()
 
             this.binding.tvLeft.setOnClickListener {
                 when(left.getId()) {
-                    1 -> this.listener.changePage(1)
-                    2 -> this.listener.changePage(2)
-                    3 -> this.listener.changePage(3)
-                    4 -> this.listener.changePage(4)
-                    5 -> this.listener.closeApplication()
+                    1 -> this.viewModel.changePage("Home")
+                    2 -> this.viewModel.changePage("Search")
+                    3 -> this.viewModel.changePage("Menu")
+                    4 -> this.viewModel.changePage("Setting")
+                    5 -> this.viewModel.close()
                 }
             }
         }

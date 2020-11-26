@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tv_menu"
-    android:layout_width="match_parent"
+    android:id="@+id/menu_list"
     android:layout_height="wrap_content"
-    android:padding="@dimen/p_menu">
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/xxsmall"
+    android:gravity="center">
 
-</TextView>
+    <TextView
+        android:id="@+id/tv_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:layout_weight="1"
+        android:padding="@dimen/medium"
+        android:textSize="@dimen/medium"
+        android:textAllCaps="true"/>
+
+    <ImageButton
+        android:id="@+id/ib_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:src="@drawable/btn_edit"/>
+
+    <ImageButton
+        android:id="@+id/ib_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/transparent"
+        android:src="@drawable/btn_delete"/>
+
+</LinearLayout>

@@ -1,11 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/xxsmall"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_add_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is add fragment" />
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_name" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/et_add_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small"/>
+
+    <TextView
+        android:id="@+id/tv_add_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_description" />
+
+    <EditText
+        android:id="@+id/et_add_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small"/>
+
+    <TextView
+        android:id="@+id/tv_add_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_tag" />
+
+    <EditText
+        android:id="@+id/et_add_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small"/>
+
+    <TextView
+        android:id="@+id/tv_add_bahan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_ingredient" />
+
+    <EditText
+        android:id="@+id/et_add_bahan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small"/>
+
+    <TextView
+        android:id="@+id/tv_add_cara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_step" />
+
+    <EditText
+        android:id="@+id/et_add_cara"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small"/>
+
+    <TextView
+        android:id="@+id/tv_add_resto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_available" />
+
+    <EditText
+        android:id="@+id/et_add_resto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fab_save"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/medium"
+        android:id="@+id/fab_add_save"
+        app:backgroundTint="@color/colorPrimary" />
+
+</LinearLayout>

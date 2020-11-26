@@ -4,6 +4,8 @@
     android:id="@+id/tv_left"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/p_menu">
+    android:textSize="@dimen/small"
+    android:padding="@dimen/medium"
+    android:textColor="@android:color/white">
 
 </TextView>

@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true">
 
     <LinearLayout
+        android:id="@+id/ll_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -25,7 +26,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/fragment_container"/>
+            android:id="@+id/fragment_container" />
     </LinearLayout>
 
     <!-- Left Drawer -->
@@ -33,13 +34,13 @@
         android:id="@+id/left_drawer"
         android:layout_width="@dimen/left"
         android:layout_height="match_parent"
-        android:layout_gravity="start" >
+        android:layout_gravity="start">
 
         <fragment
             android:name="com.example.makanapa.fragment.LeftFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

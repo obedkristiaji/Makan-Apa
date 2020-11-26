@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="left">240dp</dimen>
-    <dimen name="right">200dp</dimen>
     <dimen name="tb_elevation">4dp</dimen>
-    <dimen name="p_menu">20dp</dimen>
+    <dimen name="xxjumbo">200dp</dimen>
+    <dimen name="xjumbo">125dp</dimen>
+    <dimen name="jumbo">100dp</dimen>
+    <dimen name="xxlarge">60dp</dimen>
+    <dimen name="xlarge">40dp</dimen>
+    <dimen name="large">30dp</dimen>
+    <dimen name="medium">20dp</dimen>
+    <dimen name="small">15dp</dimen>
+    <dimen name="xsmall">10dp</dimen>
+    <dimen name="xxsmall">5dp</dimen>
 </resources>

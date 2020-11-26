@@ -5,15 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import androidx.fragment.app.Fragment
-import com.example.makanapa.FragmentListener
 import com.example.makanapa.databinding.MenuListBinding
 import com.example.makanapa.model.Menu
+import com.example.makanapa.viewmodel.MainActivityViewModel
 
-class MenuListAdapter(context: Context, listener: FragmentListener): BaseAdapter() {
+class MenuListAdapter(context: Context, viewModel: MainActivityViewModel): BaseAdapter() {
     private var MenuList: List<Menu> = ArrayList()
     private var view: Context = context
-    private var listener: FragmentListener = listener
+    private var viewModel = viewModel
 
     fun update(menu: List<Menu>) {
         this.MenuList = menu
@@ -38,26 +37,39 @@ class MenuListAdapter(context: Context, listener: FragmentListener): BaseAdapter
 
         if (view == null) {
             itemView = MenuListBinding.inflate(LayoutInflater.from(this.view)).root
-            viewHolder = ViewHolder(itemView, listener)
+            viewHolder = ViewHolder(itemView, viewModel)
             itemView.tag = viewHolder
         } else {
             itemView = view
             viewHolder = view.tag as ViewHolder
         }
 
-        viewHolder.updateView(this.getItem(position), position)
+        viewHolder.updateView(this.getItem(position), position, this.MenuList)
         return itemView
     }
 
-    private class ViewHolder(view: View, listener: FragmentListener) {
+    private class ViewHolder(view: View, viewModel: MainActivityViewModel) {
         private val binding: MenuListBinding = MenuListBinding.bind(view)
-        private val listener: FragmentListener = listener
+        private val viewModel: MainActivityViewModel = viewModel
 
-        fun updateView(menu: Menu, position: Int) {
+        fun updateView(menu: Menu, position: Int, menuList: List<Menu>) {
             this.binding.tvMenu.text = menu.getTitle()
+            this.viewModel.darkText(this.viewModel.dark.value!!, this.binding.tvMenu)
 
             this.binding.tvMenu.setOnClickListener {
-                this.listener.onMenuListClick(position, menu.getTitle(), menu.getDesc(), menu.getTag(), menu.getBahan(), menu.getCara(), menu.getResto())
+                this.viewModel.updateSearch(menuList, position)
+                this.viewModel.changePage("Search")
+            }
+
+            this.binding.ibEdit.setOnClickListener {
+                this.viewModel.updateSearch(menuList, position)
+                this.viewModel.returnPostion(position)
+                this.viewModel.changePage("Edit")
+            }
+
+            this.binding.ibDelete.setOnClickListener {
+                this.viewModel.deleteMenu(menuList, position)
+                this.viewModel.changePage("Menu")
             }
         }
     }

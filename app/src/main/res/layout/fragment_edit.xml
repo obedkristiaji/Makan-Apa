@@ -1,11 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="@dimen/xxsmall"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is edit fragment" />
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/large"
+        android:textAllCaps="true"
+        android:text="" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_edit_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_name" />
+
+    <EditText
+        android:id="@+id/et_edit_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_title_hint"
+        android:textSize="@dimen/small" />
+
+    <TextView
+        android:id="@+id/tv_edit_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_description" />
+
+    <EditText
+        android:id="@+id/et_edit_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small" />
+
+    <TextView
+        android:id="@+id/tv_edit_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_tag" />
+
+    <EditText
+        android:id="@+id/et_edit_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small" />
+
+    <TextView
+        android:id="@+id/tv_edit_bahan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_ingredient" />
+
+    <EditText
+        android:id="@+id/et_edit_bahan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small" />
+
+    <TextView
+        android:id="@+id/tv_edit_cara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_step" />
+
+    <EditText
+        android:id="@+id/et_edit_cara"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small" />
+
+    <TextView
+        android:id="@+id/tv_edit_resto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_available" />
+
+    <EditText
+        android:id="@+id/et_edit_resto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/small" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fab_save"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/medium"
+        android:id="@+id/fab_edit_save"
+        app:backgroundTint="@color/colorPrimary" />
+
+</LinearLayout>

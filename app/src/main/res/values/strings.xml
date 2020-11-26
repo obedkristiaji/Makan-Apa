@@ -1,10 +1,22 @@
 <resources>
     <string name="app_name">Makan Apa</string>
-    <string name="main_fragment">Makan Apa Hari ini?</string>
+    <string name="home_fragment_1">Makan Apa</string>
+    <string name="home_fragment_2">Hari ini?</string>
     <string name="click">Search</string>
-    <string name="menu_fragment_text">This is Menu Fragment</string>
-    <string name="search_fragment_text">This is Search Fragment</string>
-    <string name="setting_fragment_text">This is Setting Fragment</string>
     <string name="openDrawer">Open Drawer</string>
     <string name="closeDrawer">Close Drawer</string>
+    <string name="menu_name">Nama Menu :</string>
+    <string name="menu_description">Deskripsi :</string>
+    <string name="menu_tag">Tag :</string>
+    <string name="menu_ingredient">Bahan :</string>
+    <string name="menu_step">Langkah Memasak :</string>
+    <string name="menu_available">Tersedia di Resto :</string>
+    <string name="setting_theme_text">Theme</string>
+    <string name="setting_btn_dark">Dark Mode</string>
+    <string name="setting_btn_light">Light Mode</string>
+    <string name="setting_clear_text">Clear Data</string>
+    <string name="setting_btn_clear">Clear</string>
+    <string name="menu_btn_search">Search</string>
+    <string name="menu_hint">Nama, Tag atau Bahan</string>
+    <string name="edit_title_hint">Masukkan nama baru jika ingin mengubah nama</string>
 </resources>

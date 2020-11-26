@@ -1,70 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white">
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:textSize="@dimen/large"
+        android:textAllCaps="true"
+        android:text="" />
 
     <TextView
+        android:id="@+id/tv_desc1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deskripsi" />
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_description" />
 
     <TextView
-        android:id="@+id/tv_desc"
+        android:id="@+id/tv_desc2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:textSize="@dimen/small"
+        android:text="" />
 
     <TextView
+        android:id="@+id/tv_tag1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tag :" />
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_tag" />
 
     <TextView
-        android:id="@+id/tv_tag"
+        android:id="@+id/tv_tag2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:textSize="@dimen/small"
+        android:text="" />
 
     <TextView
+        android:id="@+id/tv_bahan1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Bahan :" />
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_ingredient" />
 
     <TextView
-        android:id="@+id/tv_bahan"
+        android:id="@+id/tv_bahan2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:textSize="@dimen/small"
+        android:text="" />
 
     <TextView
+        android:id="@+id/tv_cara1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Langkah memasak" />
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_step" />
 
     <TextView
-        android:id="@+id/tv_cara"
+        android:id="@+id/tv_cara2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:textSize="@dimen/small"
+        android:text="" />
 
     <TextView
+        android:id="@+id/tv_resto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tersedia di Resto :" />
+        android:textSize="@dimen/medium"
+        android:text="@string/menu_available" />
 
     <TextView
-        android:id="@+id/tv_resto"
+        android:id="@+id/tv_resto2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""/>
+        android:textSize="@dimen/small"
+        android:text="" />
 
 </LinearLayout>

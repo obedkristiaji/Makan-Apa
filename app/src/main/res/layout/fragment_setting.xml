@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/setting_fragment_text" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/xxsmall">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_theme"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/medium"
+            android:text="@string/setting_theme_text" />
+
+        <Button
+            android:layout_width="@dimen/xjumbo"
+            android:layout_height="@dimen/xlarge"
+            android:text="@string/setting_btn_dark"
+            android:background="@drawable/custom_btn_search"
+            android:textColor="@android:color/white"
+            android:id="@+id/btn_dark" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/xxsmall">
+
+        <TextView
+            android:id="@+id/tv_clear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/medium"
+            android:text="@string/setting_clear_text" />
+
+        <Button
+            android:layout_width="@dimen/xjumbo"
+            android:layout_height="@dimen/xlarge"
+            android:text="@string/setting_btn_clear"
+            android:background="@drawable/custom_btn_search"
+            android:textColor="@android:color/white"
+            android:id="@+id/btn_clear" />
+    </LinearLayout>
+
+</LinearLayout>
