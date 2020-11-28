@@ -6,4 +6,5 @@ https://github.com/obedkristiaji/makanapa.git
 
 # Contributor
 - Obed Kristiaji Sudarman (6181801003)
+- Ame Fedora Ignacia Ginting (6181801047)
 - Muhamad Ariq Pratama (6181801054)
